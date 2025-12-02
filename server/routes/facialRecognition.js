@@ -2,18 +2,11 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs').promises;
 
 // Configure multer for video uploads
 const storage = multer.diskStorage({
-  destination: async (req, file, cb) => {
-    const uploadDir = 'uploads';
-    try {
-      await fs.mkdir(uploadDir, { recursive: true });
-      cb(null, uploadDir);
-    } catch (error) {
-      cb(error);
-    }
+  destination: (req, file, cb) => {
+    cb(null, 'uploads');
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));

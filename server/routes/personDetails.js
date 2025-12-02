@@ -32,6 +32,9 @@ const personDatabase = [
   }
 ];
 
+// Simple counter for ID generation
+let personIdCounter = personDatabase.length;
+
 /**
  * GET /api/person-details/search
  * Search for person by faceId
@@ -114,8 +117,9 @@ router.post('/', async (req, res) => {
       });
     }
 
+    personIdCounter++;
     const newPerson = {
-      id: (personDatabase.length + 1).toString(),
+      id: personIdCounter.toString(),
       faceId: faceId,
       name: name,
       birthday: birthday || null,
