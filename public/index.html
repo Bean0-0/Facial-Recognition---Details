@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Recognition - Instagram Livestream</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Facial Recognition System</h1>
+            <p class="subtitle">Instagram Livestream Analysis & Person Details</p>
+        </header>
+
+        <main>
+            <!-- Instagram Livestream Section -->
+            <section class="card">
+                <h2>Instagram Livestream Capture</h2>
+                <div class="form-group">
+                    <label for="livestreamUrl">Instagram Livestream URL:</label>
+                    <input type="text" id="livestreamUrl" placeholder="https://www.instagram.com/live/...">
+                    <button onclick="captureLivestream()">Capture Livestream</button>
+                </div>
+                <div id="livestreamStatus" class="status-message"></div>
+            </section>
+
+            <!-- Video Upload Section -->
+            <section class="card">
+                <h2>Upload Video for Analysis</h2>
+                <div class="form-group">
+                    <label for="videoUpload">Select Video File:</label>
+                    <input type="file" id="videoUpload" accept="video/*">
+                    <button onclick="uploadVideo()">Process Video</button>
+                </div>
+                <div id="uploadStatus" class="status-message"></div>
+            </section>
+
+            <!-- Facial Recognition Results -->
+            <section class="card">
+                <h2>Detected Faces</h2>
+                <div id="facesContainer" class="faces-grid">
+                    <p class="placeholder-text">No faces detected yet. Upload a video or capture a livestream to begin.</p>
+                </div>
+            </section>
+
+            <!-- Person Details Section -->
+            <section class="card">
+                <h2>Person Database</h2>
+                <button onclick="loadPersonDatabase()">Load All Persons</button>
+                <div id="personDatabase" class="person-list">
+                    <p class="placeholder-text">Click "Load All Persons" to view the database.</p>
+                </div>
+            </section>
+
+            <!-- Add Person Form -->
+            <section class="card">
+                <h2>Add New Person</h2>
+                <form id="addPersonForm" onsubmit="addPerson(event)">
+                    <div class="form-group">
+                        <label for="personName">Name:</label>
+                        <input type="text" id="personName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="personBirthday">Birthday:</label>
+                        <input type="date" id="personBirthday">
+                    </div>
+                    <div class="form-group">
+                        <label for="personFaceId">Face ID:</label>
+                        <input type="text" id="personFaceId" required placeholder="face-XXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="personOccupation">Occupation:</label>
+                        <input type="text" id="personOccupation">
+                    </div>
+                    <div class="form-group">
+                        <label for="personLocation">Location:</label>
+                        <input type="text" id="personLocation">
+                    </div>
+                    <div class="form-group">
+                        <label for="personInterests">Interests (comma-separated):</label>
+                        <input type="text" id="personInterests" placeholder="music, sports, technology">
+                    </div>
+                    <button type="submit">Add Person</button>
+                </form>
+                <div id="addPersonStatus" class="status-message"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Facial Recognition System &copy; 2025 | Configure API keys in .env file</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
